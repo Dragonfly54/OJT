@@ -1,0 +1,165 @@
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <!-- main logo -->
+        <div class="mainlogo-container">
+          <img
+            src="assets/img/eCargaMainLogo.png"
+            alt="mainlogo"
+            class="mainlogo"
+          />
+        </div>
+        <h1
+          class="intro-txt my-5 display-5 fw-bold ls-tight"
+          style="color: hsl(218, 81%, 95%)"
+        >
+          Attendance Management <br />
+          <span style="color: hsl(218, 81%, 75%)">For eCarga Developers</span>
+        </h1>
+        <p class="desc-txt mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+          Streamline your attendance tracking process with our innovative
+          solution designed exclusively for eCarga developers. Experience
+          efficient and hassle-free management of work hours, ensuring optimal
+          productivity for your team.
+        </p>
+      </div>
+      <!-- bg items -->
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div
+          id="radius-shape-1"
+          class="position-absolute rounded-circle shadow-5-strong"
+        ></div>
+        <div
+          id="radius-shape-2"
+          class="position-absolute shadow-5-strong"
+        ></div>
+        <div
+          id="radius-shape-3"
+          class="position-absolute rounded-circle shadow-5-strong"
+        ></div>
+        <!-- form -->
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <h2 class="logintitle mb-4 fw-medium">Login</h2>
+
+              <!-- Email input -->
+              <div class="email-div form-floating form-outline mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email-input"
+                  formControlName="email"
+                  placeholder="Developer@eei.com.ph"
+                />
+                <label class="email-label" for="email-input"
+                  >Email Address</label
+                >
+                <div
+                  *ngIf="
+                    loginForm.get('email')?.hasError('required') &&
+                    (loginForm.get('email')?.touched ||
+                      loginForm.get('email')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Email is required.
+                </div>
+                <div
+                  *ngIf="
+                    loginForm.get('email')?.hasError('email') &&
+                    (loginForm.get('email')?.touched ||
+                      loginForm.get('email')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Please enter a valid email address.
+                </div>
+              </div>
+
+              <!-- Password input -->
+              <div class="password-div form-floating form-outline mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password-input"
+                  formControlName="password"
+                  placeholder="Password"
+                />
+                <label class="password-label" for="password-input"
+                  >Password</label
+                >
+                <div
+                  *ngIf="
+                    loginForm.get('password')?.hasError('required') &&
+                    (loginForm.get('password')?.touched ||
+                      loginForm.get('password')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Password is required.
+                </div>
+                <div
+                  *ngIf="
+                    loginForm.get('password')?.hasError('minlength') &&
+                    (loginForm.get('password')?.touched ||
+                      loginForm.get('password')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Password must be at least 8 characters long.
+                </div>
+              </div>
+
+              <!-- Checkbox -->
+              <div
+                class="d-flex justify-content-between align-items-center mb-4"
+              >
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="rememberMe"
+                    formControlName="rememberMe"
+                  />
+                  <label class="form-check-label" for="rememberMe"
+                    >Remember Me</label
+                  >
+                </div>
+
+                <div>
+                  <a routerLink="/forgot-password" id="forgotPassword"
+                    >Forgot Password?</a
+                  >
+                </div>
+              </div>
+
+              <!-- Submit button -->
+              <div class="button-container mb-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary loginbutton fw-medium"
+                  [disabled]="!loginForm.valid"
+                >
+                  Login
+                </button>
+              </div>
+
+              <!-- signuplink -->
+              <div class="sign-up-link">
+                <span>
+                  New Developer?&nbsp;<a
+                    routerLink="/signup"
+                    class="create-account"
+                    >Create an Account.</a
+                  >
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

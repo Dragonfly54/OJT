@@ -139,6 +139,7 @@
               <div class="button-container mb-4">
                 <button
                   type="submit"
+                  (click)="onLoginButtonClick()"
                   class="btn btn-primary loginbutton fw-medium"
                   [disabled]="!loginForm.valid"
                 >

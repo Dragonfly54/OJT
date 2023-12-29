@@ -5,9 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   status = false;
   addToggle() {
     this.status = !this.status;
   }
+
+  ngOnInit(): void {}
 }

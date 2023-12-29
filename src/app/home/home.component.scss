@@ -1,0 +1,9 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+app-sidebar {
+  display: grid;
+  place-items: left;
+}

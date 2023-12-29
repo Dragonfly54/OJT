@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <form class="d-flex" role="search">
+          <div class="input-group rounded">
+            <span class="input-group-text border-0" id="search-addon">
+              <i class="bi bi-search"></i>
+            </span>
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              formControlName="search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+          </div>
+        </form>
+        <div class="d-flex align-items-center ms-auto">
+          <div class="ms-auto">
+            <i class="bi bi-bell-fill"></i>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-transparent dropdown-toggle ms-2"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Yukari Takeba
+            </button>
+            <ul
+              class="dropdown-menu transparent-dropdown"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+            </ul>
+          </div>
+          <a class="navbar-brand ms-auto" href="#">
+            <img
+              src="assets/img/woman.png"
+              alt="user-logo"
+              class="user-img d-inline-block align-text-top"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

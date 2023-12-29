@@ -32,8 +32,6 @@
 input[type="search"]::-webkit-search-cancel-button {
   height: 15px;
   width: 15px;
-  background: url("https://path-to-your-custom-icon") no-repeat center center;
-  background-size: contain;
   filter: hue-rotate(40deg);
 }
 

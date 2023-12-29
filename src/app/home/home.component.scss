@@ -3,7 +3,12 @@
   flex-direction: column;
 }
 
-app-sidebar {
+.app-sidebar {
   display: grid;
   place-items: left;
+}
+
+.app-navbar {
+  display: grid;
+  place-items: top;
 }

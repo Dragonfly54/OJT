@@ -12,6 +12,11 @@
   padding-bottom: 1rem !important;
 }
 
+.my-4 {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
 .title-container {
   --bs-gutter-x: 1rem;
   --bs-gutter-y: 0;
@@ -20,6 +25,55 @@
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   color: #573480;
+}
+
+.card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  --bs-card-cap-padding-y: 0.5rem;
+  --bs-card-cap-padding-x: 1rem;
+  --bs-card-cap-color: ;
+  --bs-card-cap-bg: #fff;
+  --bs-card-border-width: 0;
+  --bs-card-border-color: rgba(0, 0, 0, 0.125);
+  padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+  margin-bottom: 0;
+  color: var(--bs-card-cap-color);
+  background-color: var(--bs-card-cap-bg);
+  border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
+}
+
+.bg-gradient-primary {
+  background-image: linear-gradient(to bottom, #573480 0%, #442963 68%);
+}
+
+.shadow-primary {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(64, 64, 64, 0.4) !important;
+}
+
+.border-radius-lg {
+  border-radius: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1.5rem !important;
+}
+
+.pb-3 {
+  padding-bottom: 1rem !important;
+}
+
+.px-0 {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem !important;
 }
 
 .icon {
@@ -63,8 +117,34 @@
   position: absolute !important;
 }
 
-.time {
-  color: #573480;
+.ngb-datepicker {
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.25rem;
+  display: inline-block;
+  width: 100%;
+}
+
+::ng-deep {
+  .ngb-dp-months,
+  .ngb-dp-weekdays,
+  .ngb-dp-week {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+
+  .ngb-dp-weekday {
+    flex: 1;
+    margin: 0 5px;
+  }
+  .ngb-dp-arrow-btn {
+    padding: 0 0.25rem;
+    margin: 0 0.5rem;
+    border: none;
+    background-color: transparent;
+    z-index: 1;
+    color: #573480;
+  }
 }
 
 html * {

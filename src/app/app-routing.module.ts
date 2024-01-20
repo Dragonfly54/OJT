@@ -5,21 +5,19 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./features/user/login/login.module').then((m) => m.LoginModule),
+      import('./pages/user/login/login.module').then((m) => m.LoginModule),
   },
   {
     path: '',
     loadChildren: () =>
-      import('./features/user/forgot-password/forgot-password.module').then(
+      import('./pages/user/forgot-password/forgot-password.module').then(
         (m) => m.ForgotPasswordModule
       ),
   },
   {
     path: '',
     loadChildren: () =>
-      import('./features/user/signup/signup.module').then(
-        (m) => m.SignupModule
-      ),
+      import('./pages/user/signup/signup.module').then((m) => m.SignupModule),
   },
   {
     path: '',

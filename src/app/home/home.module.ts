@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { ShareModule } from '../share/share.module';
-import { MainModule } from '../features/main/main.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -11,7 +11,7 @@ import { MainModule } from '../features/main/main.module';
     RouterModule.forChild([{ path: 'home', component: HomeComponent }]),
     CommonModule,
     ShareModule,
-    MainModule,
+    DashboardModule,
   ],
 })
 export class HomeModule {}

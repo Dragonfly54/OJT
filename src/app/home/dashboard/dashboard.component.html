@@ -104,54 +104,57 @@
               <h6 class="text-white text-capitalize ps-3">Attendance</h6>
             </div>
           </div>
-          <div class="card-body px-0 pb-2 clock-body">
-            <div class="clock">
-              <div class="clock__circle">
-                <div class="clock__rounder"></div>
-                <div
-                  class="clock__hour"
-                  [style.transform]="clockHour$ | async"
-                  id="clock-hour"
-                ></div>
-                <div
-                  class="clock__minutes"
-                  [style.transform]="clockMinute$ | async"
-                  id="clock-minutes"
-                ></div>
-              </div>
-
-              <div>
-                <div class="clock__date">
-                  <span class="clock__day-week" id="date-day-week">{{
-                    (clockText$ | async)?.dayWeek
-                  }}</span>
-
-                  <div>
-                    <span class="clock__month" id="date-month">{{
-                      (clockText$ | async)?.month
-                    }}</span>
-                    <span class="clock__day" id="date-day">{{
-                      (clockText$ | async)?.day
-                    }}</span>
-                    <span class="clock__year" id="date-year">
-                      {{ (clockText$ | async)?.year }}</span
-                    >
-                  </div>
+          <div class="card-body px-0 pb-2">
+            <div class="container-clock pb-2">
+              <div class="clock">
+                <div class="clock__circle">
+                  <div class="clock__rounder"></div>
+                  <div
+                    class="clock__hour"
+                    [style.transform]="clockHour$ | async"
+                    id="clock-hour"
+                  ></div>
+                  <div
+                    class="clock__minutes"
+                    [style.transform]="clockMinute$ | async"
+                    id="clock-minutes"
+                  ></div>
                 </div>
 
-                <div class="clock__text">
-                  <span class="clock__text-hour" id="text-hour">{{
-                    (clockText$ | async)?.textHour
-                  }}</span>
-                  <span class="clock__text-minutes" id="text-minutes">{{
-                    (clockText$ | async)?.textMinutes
-                  }}</span>
-                  <span class="clock__text-ampm" id="text-ampm">{{
-                    (clockText$ | async)?.ampm
-                  }}</span>
+                <div>
+                  <div class="clock__date">
+                    <span class="clock__day-week" id="date-day-week">{{
+                      (clockText$ | async)?.dayWeek
+                    }}</span>
+
+                    <div>
+                      <span class="clock__month" id="date-month">{{
+                        (clockText$ | async)?.month
+                      }}</span>
+                      <span class="clock__day" id="date-day">{{
+                        (clockText$ | async)?.day
+                      }}</span>
+                      <span class="clock__year" id="date-year">
+                        {{ (clockText$ | async)?.year }}</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="clock__text">
+                    <span class="clock__text-hour" id="text-hour">{{
+                      (clockText$ | async)?.textHour
+                    }}</span>
+                    <span class="clock__text-minutes" id="text-minutes">{{
+                      (clockText$ | async)?.textMinutes
+                    }}</span>
+                    <span class="clock__text-ampm" id="text-ampm">{{
+                      (clockText$ | async)?.ampm
+                    }}</span>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="progress-bar pt-2 pb-2"></div>
           </div>
         </div>
       </div>

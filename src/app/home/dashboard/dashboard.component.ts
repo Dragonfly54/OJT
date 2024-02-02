@@ -1,7 +1,7 @@
 import * as moment from 'moment';
-import { Observable, interval } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
+import { Observable, interval, Subscription } from 'rxjs';
+import { map, takeWhile } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import {
   NgbDateStruct,
   NgbDate,
@@ -14,7 +14,7 @@ import {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   model: NgbDateStruct;
   dayTemplateData: { date: NgbDate; current: boolean };
   clockHour$!: Observable<string>;
@@ -22,6 +22,13 @@ export class DashboardComponent implements OnInit {
   clockText$!: Observable<any>;
 
   customDayTemplate: any;
+
+  @Input() progress: number = 0;
+  isPlaying: boolean = false;
+  totalWorkTime: number = 8 * 60 * 60 * 1000; // 8 hours in milliseconds
+  startTime: moment.Moment | null = null;
+  elapsedTime: number = 0;
+  intervalSubscription: Subscription | null = null;
 
   constructor(
     private calendar: NgbCalendar,
@@ -43,6 +50,10 @@ export class DashboardComponent implements OnInit {
     );
 
     this.clockText$ = interval(1000).pipe(map(() => this.getClockText()));
+  }
+
+  ngOnDestroy(): void {
+    this.stopProgress();
   }
 
   private getClockTime(unit: 'hour' | 'minute'): string {
@@ -78,5 +89,39 @@ export class DashboardComponent implements OnInit {
       textHour: `${hh}:`,
       textMinutes: mm,
     };
+  }
+
+  startProgress(): void {
+    if (!this.isPlaying) {
+      this.isPlaying = true;
+      this.startTime = moment();
+      this.intervalSubscription = interval(1000).subscribe(() => {
+        this.updateProgress();
+      });
+    }
+  }
+
+  stopProgress(): void {
+    if (this.intervalSubscription) {
+      this.intervalSubscription.unsubscribe();
+    }
+    this.isPlaying = false;
+    this.startTime = null;
+    this.elapsedTime = 0;
+  }
+
+  updateProgress(): void {
+    if (this.startTime) {
+      const currentTime = moment();
+      this.elapsedTime = currentTime.diff(this.startTime);
+      this.progress = (this.elapsedTime / this.totalWorkTime) * 100;
+      if (this.elapsedTime >= this.totalWorkTime) {
+        this.stopProgress();
+      }
+    }
+  }
+
+  pauseProgress(): void {
+    this.stopProgress();
   }
 }

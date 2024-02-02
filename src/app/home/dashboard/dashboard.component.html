@@ -154,7 +154,15 @@
                 </div>
               </div>
             </div>
-            <div class="progress-bar pt-2 pb-2"></div>
+            <div class="progress-bar-container pt-2 pb-2">
+              <div class="progress-bar" [style.width.%]="progress"></div>
+            </div>
+            <button (click)="pauseProgress()" [disabled]="!isPlaying">
+              Pause
+            </button>
+            <button (click)="startProgress()" [disabled]="isPlaying">
+              Play
+            </button>
           </div>
         </div>
       </div>

@@ -40,13 +40,12 @@ export class LoginComponent implements OnInit {
         }
 
         console.log('User Authenticated', credentials);
+        this.router.navigate(['/home']);
       } else {
-        console.log('Invalid Credentials');
+        alert('Invalid Credentials');
       }
     }
   }
 
-  onLoginButtonClick() {
-    this.router.navigate(['/home']);
-  }
+  onLoginButtonClick() {}
 }

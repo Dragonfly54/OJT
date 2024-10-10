@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import { Observable, interval, Subscription } from 'rxjs';
-import { map, takeWhile } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import {
   NgbDateStruct,
@@ -25,10 +25,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   @Input() progress: number = 0;
   isPlaying: boolean = false;
-  totalWorkTime: number = 8 * 60 * 60 * 1000; // 8 hours in milliseconds
+  totalWorkTime: number = 8 * 60 * 60 * 1000;
   startTime: moment.Moment | null = null;
   elapsedTime: number = 0;
   intervalSubscription: Subscription | null = null;
+  pauseStartTime: moment.Moment | null = null;
+  pausedTime: number = 0;
 
   constructor(
     private calendar: NgbCalendar,
@@ -95,6 +97,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if (!this.isPlaying) {
       this.isPlaying = true;
       this.startTime = moment();
+      if (this.pauseStartTime) {
+        this.pausedTime += moment().diff(this.pauseStartTime);
+      }
       this.intervalSubscription = interval(1000).subscribe(() => {
         this.updateProgress();
       });
@@ -108,12 +113,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.isPlaying = false;
     this.startTime = null;
     this.elapsedTime = 0;
+    this.pauseStartTime = null;
+    this.pausedTime = 0;
   }
 
   updateProgress(): void {
     if (this.startTime) {
       const currentTime = moment();
-      this.elapsedTime = currentTime.diff(this.startTime);
+      const elapsedTimeSinceStart =
+        currentTime.diff(this.startTime) - this.pausedTime;
+      this.elapsedTime = elapsedTimeSinceStart;
       this.progress = (this.elapsedTime / this.totalWorkTime) * 100;
       if (this.elapsedTime >= this.totalWorkTime) {
         this.stopProgress();
@@ -122,6 +131,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   pauseProgress(): void {
-    this.stopProgress();
+    if (this.isPlaying) {
+      this.pauseStartTime = moment();
+      this.isPlaying = false;
+    } else {
+      this.pausedTime += moment().diff(this.pauseStartTime);
+      this.pauseStartTime = null;
+      this.isPlaying = true;
+    }
   }
 }

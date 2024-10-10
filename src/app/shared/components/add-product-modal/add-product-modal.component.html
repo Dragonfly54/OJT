@@ -1,0 +1,67 @@
+<ng-template #addProduct let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Product Add</h4>
+      <span>Add new product</span>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+      <div class="form-group mb-3 mt-3">
+        <label for="ctg">Category</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          id="category"
+          [(ngModel)]="product.type"
+          name="category"
+          required
+        >
+          <option selected>Open this select category</option>
+          <option value="Appetizers">Appetizers</option>
+          <option value="Savory Waffles">Savory Waffles</option>
+          <option value="Sweet Waffles">Sweet Waffles</option>
+          <option value="Rice Dishes">Rice Dishes</option>
+          <option value="Salads">Salads</option>
+          <option value="Hot Drink">Hot Drink</option>
+          <option value="Cold Drink">Cold Drink</option>
+        </select>
+      </div>
+      <div class="form-group mb-3 mt-3">
+        <label for="title">Product Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="product.title"
+          name="title"
+          required
+        />
+      </div>
+      <div class="form-group mb-3 mt-3">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          [(ngModel)]="product.price"
+          name="price"
+          required
+        />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">
+      Add Product
+    </button>
+  </div>
+</ng-template>

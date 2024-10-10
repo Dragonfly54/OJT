@@ -1,0 +1,231 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="pos-left col-lg-8 col-sm-12">
+      <div class="title"><h5>Point of Sale</h5></div>
+      <div class="crd-ctg">
+        <div
+          class="card"
+          type="button"
+          [routerLink]="['/dashboard/pos/item-appetizers']"
+          [ngClass]="{ active: selectedCategory === 'appetizers' }"
+          (click)="selectCategory('appetizers')"
+        >
+          <div class="card-body d-flex flex-column align-items-center">
+            <img
+              src="assets/img/appetizer.png"
+              class="cat-img"
+              alt="Appetizer Img"
+            />
+            <span class="cat-name text-center">Appetizers</span>
+          </div>
+        </div>
+        <div
+          class="card"
+          type="button"
+          [routerLink]="['/dashboard/pos/item-savory-waffles']"
+          [ngClass]="{ active: selectedCategory === 'savory-waffles' }"
+          (click)="selectCategory('savory-waffles')"
+        >
+          <div class="card-body d-flex flex-column align-items-center">
+            <img
+              src="assets/img/savorywaffle.png"
+              class="cat-img"
+              alt="Savory Waffles Img"
+            />
+            <span class="cat-name text-center">Savory Waffles</span>
+          </div>
+        </div>
+        <div
+          class="card"
+          type="button"
+          [routerLink]="['/dashboard/pos/item-sweet-waffles']"
+          [ngClass]="{ active: selectedCategory === 'sweet-waffles' }"
+          (click)="selectCategory('sweet-waffles')"
+        >
+          <div class="card-body d-flex flex-column align-items-center">
+            <img
+              src="assets/img/sweetwaffle.png"
+              class="cat-img"
+              alt="Sweet Waffles Img"
+            />
+            <span class="cat-name text-center">Sweet Waffles</span>
+          </div>
+        </div>
+        <div
+          class="card"
+          type="button"
+          [routerLink]="['/dashboard/pos/item-salads']"
+          [ngClass]="{ active: selectedCategory === 'salads' }"
+          (click)="selectCategory('salads')"
+        >
+          <div class="card-body d-flex flex-column align-items-center">
+            <img src="assets/img/salad.png" class="cat-img" alt="Salads Img" />
+            <span class="cat-name text-center">Salads</span>
+          </div>
+        </div>
+        <div
+          class="card"
+          type="button"
+          [routerLink]="['/dashboard/pos/item-rice-dishes']"
+          [ngClass]="{ active: selectedCategory === 'rice-dishes' }"
+          (click)="selectCategory('rice-dishes')"
+        >
+          <div class="card-body d-flex flex-column align-items-center">
+            <img
+              src="assets/img/fried-rice.png"
+              class="cat-img"
+              alt="Rice Dishes Img"
+            />
+            <span class="cat-name text-center">Rice Dishes</span>
+          </div>
+        </div>
+        <div
+          class="card"
+          type="button"
+          [routerLink]="['/dashboard/pos/item-hot-drinks']"
+          [ngClass]="{ active: selectedCategory === 'hot-drinks' }"
+          (click)="selectCategory('hot-drinks')"
+        >
+          <div class="card-body d-flex flex-column align-items-center">
+            <img
+              src="assets/img/coffee-cup.png"
+              class="cat-img"
+              alt="Hot Drinks Img"
+            />
+            <span class="cat-name text-center">Hot Drinks</span>
+          </div>
+        </div>
+        <div
+          class="card"
+          type="button"
+          [routerLink]="['/dashboard/pos/item-cold-drinks']"
+          [ngClass]="{ active: selectedCategory === 'cold-drinks' }"
+          (click)="selectCategory('cold-drinks')"
+        >
+          <div class="card-body d-flex flex-column align-items-center">
+            <img
+              src="assets/img/cold-coffee.png"
+              class="cat-img"
+              alt="Cold Drinks Img"
+            />
+            <span class="cat-name text-center">Cold Drinks</span>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid cat-items">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <div class="ol-right col-lg-4 col-sm-12">
+      <div class="ol-header d-flex justify-content-between">
+        <div class="title d-flex flex-column">
+          <h5>Order List</h5>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="checkout-cart">
+            <div
+              class="header cart-header d-flex justify-content-between align-items-center"
+            >
+              <div class="card total-items">
+                <span class="d-flex justify-content-center"
+                  >Total Items: {{ totalItemsInCart() }}
+                </span>
+              </div>
+              <div class="btn-clear-all">
+                <button
+                  class="btn bold btn-outline-danger clear-cart-button"
+                  (click)="clearCart()"
+                >
+                  Clear All
+                </button>
+              </div>
+            </div>
+
+            <div class="items-container">
+              <div
+                class="card card-cart-item"
+                *ngFor="let item of cartItems$ | async"
+              >
+                <div class="item-image">
+                  <img
+                    class="custom-image-size"
+                    [src]="getItemImageUrl(item)"
+                    [alt]="getItemTitle(item)"
+                  />
+                </div>
+
+                <div class="item-info">
+                  <div class="item-name">
+                    <h5>{{ getItemTitle(item) }}</h5>
+                  </div>
+                  <div class="item-price">
+                    <span> {{ getItemPrice(item) | currency : "PHP" }}</span>
+                  </div>
+                  <div class="quantity-control">
+                    <button
+                      class="btn btn-dec"
+                      (click)="decrementItemQuantity(item)"
+                    >
+                      <i class="bi bi-dash"></i>
+                    </button>
+                    <span class="quantity-counter">{{ item.quantity }}</span>
+                    <button
+                      class="btn btn-inc"
+                      (click)="incrementItemQuantity(item)"
+                    >
+                      <i class="bi bi-plus"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="item-remove">
+                  <button
+                    class="btn btn-danger remove-button"
+                    (click)="removeFromCart(item)"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="dotted-divider" />
+          <div class="item-processing">
+            <div
+              class="subtotal d-flex justify-content-between align-items-center"
+            >
+              <span class="subtotal-title">Subtotal</span>
+              <span class="subtotal-value">{{
+                calculateSubtotal() | currency : "PHP"
+              }}</span>
+            </div>
+            <div class="vat d-flex justify-content-between align-items-center">
+              <span class="vat-title">VAT</span>
+              <span class="vat-value">{{
+                calculateVat() | currency : "PHP"
+              }}</span>
+            </div>
+            <div
+              class="total d-flex justify-content-between align-items-center"
+            >
+              <span class="total-title">Total</span>
+              <span class="total-value">{{
+                calculateTotalPrice() | currency : "PHP"
+              }}</span>
+            </div>
+            <div class="checkout-final">
+              <div class="card" type="button" (click)="checkout()">
+                <span class="checkout-title">Checkout</span>
+                <span class="final-value">{{
+                  calculateTotalPrice() | currency : "PHP"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

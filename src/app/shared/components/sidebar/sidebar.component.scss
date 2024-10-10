@@ -1,0 +1,103 @@
+//*sidebar.component.scss
+:host {
+  --bg-color: #2a2d35;
+  --text-color: #b7b4c7;
+  --bg-hover: #555;
+  --sb-width: 250px;
+  --color-brand: #febe3a;
+  --border-color: #4f4a65;
+}
+
+//*sidebarToggle
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 250px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: transform 0.5s ease;
+  transform: translateX(-250px);
+  z-index: 1000;
+  box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-brand);
+  width: 100%;
+  height: 67px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.wh-logo {
+  max-width: 100%;
+  height: 60px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 20px 0;
+  padding: 0;
+}
+
+.sidebar-menu li a {
+  display: block;
+  padding: 15px 20px 12px 12px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.3s, border-radius 0.3s;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li .dashboard:focus {
+  background-color: var(--bg-hover);
+  border-radius: 12px;
+  color: var(--color-brand);
+}
+
+.sidebar-menu li a img {
+  height: 25px;
+  min-width: 25px;
+  border-radius: 12px;
+  line-height: 25px;
+  padding-right: 5px;
+}
+
+.sub-sidemenu {
+  list-style: none;
+  padding-left: 15px !important;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-sidemenu li {
+  padding: 1px 20px;
+}
+
+.sub-sidemenu li a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sub-sidemenu li a:hover,
+.sub-sidemenu li a:focus {
+  background-color: var(--bg-hover);
+  border-radius: 12px;
+  color: var(--color-brand);
+}

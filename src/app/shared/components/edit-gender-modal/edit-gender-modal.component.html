@@ -1,0 +1,36 @@
+<ng-template #modalGender let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Gender</h4>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+      />
+      <label class="form-check-label" for="flexCheckDefault"> Male </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckChecked"
+        checked
+      />
+      <label class="form-check-label" for="flexCheckChecked"> Female </label>
+    </div>
+  </div>
+</ng-template>

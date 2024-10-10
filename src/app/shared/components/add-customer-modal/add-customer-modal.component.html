@@ -1,0 +1,136 @@
+<ng-template #addCustomer let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Add Customer</h4>
+      <span>Add new Customer</span>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="name"
+          type="text"
+          placeholder="Juan Dela Cruz"
+          formControlName="name"
+          [ngClass]="{
+            'invalid-input':
+              customerForm.get('name')?.invalid &&
+              (customerForm.get('name')?.dirty ||
+                customerForm.get('name')?.touched)
+          }"
+        />
+        <label for="name">Customer Name</label>
+        <div
+          class="error-message"
+          *ngIf="
+            customerForm.get('name')?.invalid &&
+            (customerForm.get('name')?.dirty ||
+              customerForm.get('name')?.touched)
+          "
+        >
+          <div *ngIf="customerForm.get('name')?.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="customerForm.get('name')?.errors?.['pattern']">
+            Name must contain only letters and spaces.
+          </div>
+          <div *ngIf="customerForm.get('name')?.errors?.['minlength']">
+            Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="customerForm.get('name')?.errors?.['maxlength']">
+            Name cannot exceed 50 characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="phoneNum"
+          type="text"
+          placeholder="09078476063"
+          formControlName="phoneNum"
+          [ngClass]="{
+            'invalid-input':
+              customerForm.get('phoneNum')?.invalid &&
+              (customerForm.get('phoneNum')?.dirty ||
+                customerForm.get('phoneNum')?.touched)
+          }"
+        />
+        <label for="phoneNum">Phone Number</label>
+        <div
+          class="error-message"
+          *ngIf="
+            customerForm.get('phoneNum')?.invalid &&
+            (customerForm.get('phoneNum')?.dirty ||
+              customerForm.get('phoneNum')?.touched)
+          "
+        >
+          <div *ngIf="customerForm.get('phoneNum')?.errors?.['required']">
+            Phone number is required.
+          </div>
+          <div *ngIf="customerForm.get('phoneNum')?.errors?.['pattern']">
+            Phone number must contain only digits.
+          </div>
+          <div *ngIf="customerForm.get('phoneNum')?.errors?.['minlength']">
+            Phone number must be 11 digits long.
+          </div>
+          <div *ngIf="customerForm.get('phoneNum')?.errors?.['maxlength']">
+            Phone number cannot exceed 11 digits.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="email"
+          type="email"
+          placeholder="juanDelaCruz@gmail.com"
+          formControlName="email"
+          [ngClass]="{
+            'invalid-input':
+              customerForm.get('email')?.invalid &&
+              (customerForm.get('email')?.dirty ||
+                customerForm.get('email')?.touched)
+          }"
+        />
+        <label for="email">Email Address</label>
+        <div
+          class="error-message"
+          *ngIf="
+            customerForm.get('email')?.invalid &&
+            (customerForm.get('email')?.dirty ||
+              customerForm.get('email')?.touched)
+          "
+        >
+          <div *ngIf="customerForm.get('email')?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="customerForm.get('email')?.errors?.['email']">
+            Invalid email format.
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="customerForm.invalid"
+    >
+      Add Customer
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,99 @@
+<!-- //*sidebar.component.html -->
+<div class="sidebar" [class.open]="isOpen">
+  <a
+    class="sidebar-brand"
+    routerLink="/dashboard/dashcontent"
+    (click)="toggleSubMenu('dashboard')"
+    ><img class="wh-logo" src="assets/img/wapolHausLogo.png" alt="Wapol Haus"
+  /></a>
+  <div class="container-fluid">
+    <ul class="sidebar-menu">
+      <!-- //*dashboard -->
+      <li class="dashboard active">
+        <a
+          class="dashboard"
+          routerLink="/dashboard/dashcontent"
+          (click)="toggleSubMenu('dashboard')"
+          ><img src="assets/img/icons/dashboard.svg" alt="dashboard-icon" />
+          <span> Dashboard</span>
+        </a>
+      </li>
+      <!-- //*product -->
+      <li class="mainProduct">
+        <a class="productTab" routerLink="" (click)="toggleSubMenu('product')"
+          ><img
+            class="product-icon"
+            src="assets/img/icons/product.svg"
+            alt="product-icon"
+          />
+          <span> Product</span>
+        </a>
+        <ul class="sub-sidemenu" *ngIf="isSubMenuVisible['product']">
+          <li><a routerLink="/dashboard/product">Product</a></li>
+          <li>
+            <a routerLink="/dashboard/inventory-report">Ingridients</a>
+          </li>
+          <!-- <li><a routerLink="/dashboard/barcode">Print Barcode</a></li> -->
+        </ul>
+      </li>
+      <!-- //*sales -->
+      <li class="mainSales">
+        <a class="salesTab" routerLink="" (click)="toggleSubMenu('sales')"
+          ><img
+            class="sales-icon"
+            src="assets/img/icons/sales1.svg"
+            alt="sales-icon"
+          /><span> Sales</span>
+        </a>
+        <ul class="sub-sidemenu" *ngIf="isSubMenuVisible['sales']">
+          <li><a routerLink="/dashboard/sales">Sales</a></li>
+          <li><a routerLink="/dashboard/pos">POS</a></li>
+        </ul>
+      </li>
+      <!-- //*user -->
+      <li class="mainUsers">
+        <a class="usersTab" routerLink="" (click)="toggleSubMenu('users')"
+          ><img
+            class="users-icon"
+            src="assets/img/icons/users1.svg"
+            alt="users-icon"
+          /><span> Users</span>
+        </a>
+        <ul class="sub-sidemenu" *ngIf="isSubMenuVisible['users']">
+          <li><a routerLink="/dashboard/users">User</a></li>
+          <!-- <li><a routerLink="/dashboard/customers">Customer</a></li> -->
+        </ul>
+      </li>
+      <!-- //*report -->
+      <li class="mainReport">
+        <a class="reportTab" routerLink="" (click)="toggleSubMenu('report')"
+          ><img
+            class="report-icon"
+            src="assets/img/icons/time.svg"
+            alt="report-icon"
+          /><span> Report</span>
+        </a>
+        <ul class="sub-sidemenu" *ngIf="isSubMenuVisible['report']">
+          <li>
+            <a routerLink="/dashboard/invoice-report">Invoice Report</a>
+          </li>
+        </ul>
+      </li>
+      <!-- //*settings -->
+      <!-- <li class="mainSettings">
+        <a class="settingsTab" routerLink="" (click)="toggleSubMenu('settings')"
+          ><img
+            class="settings-icon"
+            src="assets/img/icons/settings.svg"
+            alt="settings-icon"
+          /><span> Settings</span>
+        </a>
+        <ul class="sub-sidemenu" *ngIf="isSubMenuVisible['settings']">
+          <li>
+            <a routerLink="/dashboard/general-settings">General Settings</a>
+          </li>
+        </ul>
+      </li> -->
+    </ul>
+  </div>
+</div>

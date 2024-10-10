@@ -1,0 +1,8 @@
+<!-- //*dashboard.component.html -->
+<div class="admin-container">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+  <div class="main-content" [class.sidebar-open]="isSidebarOpen">
+    <router-outlet></router-outlet>
+  </div>
+</div>

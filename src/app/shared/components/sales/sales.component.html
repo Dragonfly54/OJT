@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="title d-flex flex-column">
+    <h5>Sales</h5>
+    <span>Mange your sales</span>
+  </div>
+  <div class="sales-tbl">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div class="search-form">
+          <form class="search-form d-flex">
+            <input
+              class="search-input form-control me-2"
+              id="search"
+              type="search"
+              placeholder="Search..."
+              autocomplete="off"
+            />
+          </form>
+        </div>
+        <div class="action-button d-flex flex-row">
+          <div class="pdf">
+            <button class="btn pdf-btn" type="button" (click)="generatePDF()">
+              <i class="bi bi-file-earmark-pdf"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th (click)="sort('transactionId')">Transaction Id</th>
+
+              <th (click)="sort('payMethod')">Payment Method</th>
+              <th (click)="sort('addDate')">Added Date</th>
+              <th (click)="sort('addBy')">Added By</th>
+              <!-- add modal category here  -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transaction of pagedTransactions">
+              <td>{{ transaction.transactionId }}</td>
+              <td>{{ transaction.payMethod }}</td>
+              <td>{{ transaction.addDate }}</td>
+              <td>{{ transaction.addBy }}</td>
+              <!-- add the modal button here -->
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+          <ngb-pagination
+            [collectionSize]="transactions.length"
+            [(page)]="initialPage"
+            [pageSize]="pageSize"
+            [maxSize]="5"
+            [rotate]="true"
+            (pageChange)="pageChange($event)"
+          ></ngb-pagination>
+
+          <select
+            class="form-select"
+            style="width: auto"
+            [(ngModel)]="pageSize"
+            (ngModelChange)="updatePageSize()"
+          >
+            <option [ngValue]="4">4 items per page</option>
+            <option [ngValue]="50">50 items per page</option>
+            <option [ngValue]="100">100 items per page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

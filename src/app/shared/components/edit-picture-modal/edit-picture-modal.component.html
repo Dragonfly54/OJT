@@ -1,0 +1,38 @@
+<ng-template #modalPicture let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Profile Picture</h4>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input
+        type="file"
+        class="form-control-file"
+        id="image"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        required
+      />
+      <img
+        *ngIf="item.imageUrl"
+        [src]="item.imageUrl"
+        class="img-thumbnail mt-2"
+        style="max-width: 200px"
+        alt="Item Image"
+      />
+    </div>
+    <div class="submit-btn">
+      <button class="btn btn-primary">Change Picture</button>
+    </div>
+  </div>
+</ng-template>

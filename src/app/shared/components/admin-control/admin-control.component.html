@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <div class="title"><h5>Admin Setting</h5></div>
+  <div class="sub-title">
+    <div class="sub-title-text">
+      <h2>Welcome to your Admin Info</h2>
+      <p>
+        Admin info and options to customize it according to your preferences.
+        You
+        <br />
+        can make some changes to your basic info like your name and gender, your
+        <br />
+        contact info like your email or phone number, you can also set multiple
+        <br />
+        adresses for your home and workplace.
+      </p>
+    </div>
+    <div class="sub-title-img">
+      <img
+        class="subTitle-img"
+        src="assets/img/subTitleImg.jpg"
+        alt="subTitle-img"
+      />
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="card card-basic-info">
+      <div class="card-body">
+        <h5 class="card-title">Baisc Info</h5>
+        <p class="card-text">
+          Personalize your profile picture, change your name and gender.
+        </p>
+        <table class="table tbl-basic-info table-hover">
+          <tbody>
+            <app-edit-picture-modal></app-edit-picture-modal>
+            <tr (click)="openModalPicture()">
+              <th scope="row">Profile Picture</th>
+              <td>A profile picture helps personalize your account</td>
+              <td>
+                <img
+                  src="assets/img/profiles/avator1.jpg"
+                  alt="user-logo"
+                  class="user-img d-inline-block align-text-top"
+                />
+              </td>
+            </tr>
+            <app-edit-name-modal></app-edit-name-modal>
+            <tr (click)="openModalName()">
+              <th scope="row">Full Name</th>
+              <td>Hans Geronimo</td>
+              <td><i class="bi bi-chevron-right"></i></td>
+            </tr>
+            <app-edit-gender-modal></app-edit-gender-modal>
+            <tr (click)="openModalGender()">
+              <th scope="row">Gender</th>
+              <td>Male</td>
+              <td><i class="bi bi-chevron-right"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card card-password-info">
+      <div class="card-body">
+        <h5 class="card-title">Password Info</h5>
+        <p class="card-text">Change you password.</p>
+        <table class="table tbl-basic-info table-hover">
+          <tbody>
+            <app-edit-psswword-modal></app-edit-psswword-modal>
+            <tr (click)="openModalPassword()">
+              <th scope="row">Password</th>
+              <td>*************</td>
+              <td><i class="bi bi-chevron-right"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card card-contact-info">
+      <div class="card-body">
+        <h5 class="card-title">Contact Info</h5>
+        <p class="card-text">
+          Update your contact info by editing your Email and Phone number.
+        </p>
+        <table class="table tbl-contact-info table-hover">
+          <tbody>
+            <app-edit-email-modal></app-edit-email-modal>
+            <tr (click)="openModalEmail()">
+              <th scope="row">Email</th>
+              <td>hansgeronimo@gmail.com</td>
+              <td><i class="bi bi-chevron-right"></i></td>
+            </tr>
+            <app-edit-phone-modal></app-edit-phone-modal>
+            <tr (click)="openModalPhone()">
+              <th scope="row">Phone</th>
+              <td>63+ 907 847 6063</td>
+              <td><i class="bi bi-chevron-right"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

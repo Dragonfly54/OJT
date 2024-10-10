@@ -1,0 +1,115 @@
+:host {
+  --rad: 0.7rem;
+  --height: 2rem;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --dur: 0.3s;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+  --btn-width: 3rem;
+  --color-brand: #febe3a;
+  --color-alert: #d9534f;
+  --bg-hover: #555;
+  --bg-color: #2a2d35;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title {
+  padding: 0 0 1rem 0;
+  color: var(--bg-color);
+}
+
+.dash-widget {
+  display: grid;
+  grid-template-rows: 100px;
+  grid-template-columns:
+    minmax(250px, 1fr) minmax(250px, 1fr) minmax(250px, 1fr)
+    minmax(250px, 1fr);
+  row-gap: 1em;
+  column-gap: 1em;
+  margin: 0 0 10px 0;
+}
+
+.dash-widget .card {
+  background-color: var(--bg-color);
+  color: var(--color-light);
+  width: auto;
+  height: auto;
+}
+
+.dash-widget .card-body {
+  color: var(--color-light);
+  font-weight: lighter;
+  font-size: large;
+}
+
+.card .card-title {
+  margin-left: 4rem;
+}
+
+.card .unit {
+  margin-left: 4rem;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  height: 1em;
+  width: 1em;
+}
+
+.icon-size {
+  height: 1.6em;
+  width: 1.6em;
+}
+
+.icon-shape {
+  width: 3rem;
+  height: 3rem;
+  background-position: center;
+  border-radius: 0.5rem;
+}
+
+.icon-bg-color {
+  background-color: var(--color-brand);
+}
+
+.icon-box-shadow {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(64, 64, 64, 0.4) !important;
+}
+
+.icon-border-radius {
+  border-radius: 0.75rem;
+}
+
+.position-vt {
+  margin-top: -1.5rem !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+.store-customers .card-body,
+.online-customers .card-body,
+.store-invoice .card-body,
+.online-invoice .card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-img .bi {
+  display: grid;
+  place-items: center;
+  font-size: 4rem;
+}
+
+.transaction-tbl {
+  margin: 10px 0 10px 0;
+}

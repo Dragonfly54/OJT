@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="title d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h5>Customers</h5>
+      <span>Mange your Customers</span>
+    </div>
+    <app-add-customer-modal></app-add-customer-modal>
+    <button class="btn btn-lg btn-outline-warning" (click)="openModal()">
+      <i class="bi bi-plus-lg"></i> Add New Customer
+    </button>
+  </div>
+  <div class="customer-tbl">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div class="search-form">
+          <form class="search-form d-flex">
+            <input
+              class="search-input form-control me-2"
+              id="search"
+              type="search"
+              placeholder="Search..."
+              autocomplete="off"
+            />
+          </form>
+        </div>
+        <div class="action-button d-flex flex-row">
+          <div class="pdf">
+            <button class="btn pdf-btn" type="submit">
+              <i class="bi bi-file-earmark-pdf"></i>
+            </button>
+          </div>
+          <div class="excel">
+            <button class="btn excel-btn" type="submit">
+              <i class="bi bi-filetype-xls"></i>
+            </button>
+          </div>
+          <div class="print">
+            <button class="btn print-btn" type="submit">
+              <i class="bi bi-printer"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th (click)="sort('transactionId')">Transaction Id</th>
+              <th (click)="sort('cusName')">Customer Name</th>
+              <th (click)="sort('mobileNum')">Mobile Number</th>
+              <th (click)="sort('email')">Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of pagedCustomers">
+              <td>{{ user.transactionId }}</td>
+              <td>{{ user.cusName }}</td>
+              <td>{{ user.mobileNum }}</td>
+              <td>{{ user.email }}</td>
+              <td class="Action-column">
+                <button class="btn edit-btn" type="submit">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn delete-btn" type="submit">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+          <ngb-pagination
+            [collectionSize]="customers.length"
+            [(page)]="initialPage"
+            [pageSize]="pageSize"
+            [maxSize]="5"
+            [rotate]="true"
+            (pageChange)="pageChange($event)"
+          ></ngb-pagination>
+
+          <select
+            class="form-select"
+            style="width: auto"
+            [(ngModel)]="pageSize"
+            (ngModelChange)="updatePageSize()"
+          >
+            <option [ngValue]="2">2 items per page</option>
+            <option [ngValue]="4">4 items per page</option>
+            <option [ngValue]="6">6 items per page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

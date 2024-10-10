@@ -1,0 +1,212 @@
+//*navbar.component.scss
+:host {
+  --rad: 0.7rem;
+  --height: 2rem;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --dur: 0.3s;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+  --btn-width: 3rem;
+  --color-brand: #febe3a;
+  --color-alert: #d9534f;
+  --bg-hover: #555;
+  --bg-color: #2a2d35;
+}
+
+//*sidebarService
+.navbar {
+  width: 100vw;
+  z-index: 1000;
+  position: fixed;
+  &.sidebar-open {
+    padding-left: 250px;
+    position: fixed;
+  }
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-color);
+}
+
+.btn-toggle:hover,
+.notif-btn:hover {
+  background-color: var(--bg-hover);
+  border-radius: 25%;
+  color: var(--color-brand);
+}
+
+button {
+  border: 0;
+}
+
+//*dropdown
+.dropdown-toggle::after {
+  content: none;
+}
+
+.notif-icon {
+  filter: brightness(0) saturate(100%) invert(79%) sepia(81%) saturate(1038%)
+    hue-rotate(327deg) brightness(102%) contrast(99%);
+}
+
+.user-name {
+  padding-right: 10px;
+  text-decoration: none;
+  color: var(--color-light);
+}
+
+.dropdown-menu {
+  background-color: var(--bg-color);
+}
+
+.dropdown-menu li a {
+  color: var(--color-light);
+  cursor: pointer;
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--bg-hover);
+  transition: background-color 0.3s, border-radius 0.3s;
+  border-radius: 12px;
+}
+
+.dropdown-menu-left {
+  left: auto !important;
+  right: 0;
+}
+
+.btn-transparent.dropdown-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu .dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dropdown-menu .dropdown-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dropdown-menu .clear-btn {
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--color-alert);
+}
+
+.dropdown-menu .view-all-notif {
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--color-light);
+}
+
+.dropdown-menu .customer-img {
+  width: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.dropdown-menu .notif-item {
+  display: flex;
+  align-items: center;
+}
+
+//*navbarUserImg
+.navbar-user-icon .user-img {
+  width: 38px;
+  border-radius: 50%;
+}
+
+//*searchBar
+.search-form {
+  position: relative;
+  width: 30rem;
+  border-radius: var(--rad);
+  padding-left: 10px;
+}
+
+.search-form ::placeholder {
+  color: var(--color-light);
+}
+
+.search-icon,
+.bell-icon,
+.user-icon {
+  display: grid;
+}
+
+.search-input,
+.search-btn {
+  height: var(--height);
+  color: var(--color-light);
+}
+
+.search-input[type="search"] {
+  width: 100%;
+  background: var(--bg-color);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  transition: all var(--dur) var(--bez);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+  border: none;
+}
+
+.search-btn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  font-weight: bold;
+  background: var(--color-brand);
+  border-radius: 0 var(--rad) var(--rad) 0;
+}
+
+.search-input:not(:placeholder-shown) {
+  border-radius: var(--rad) 0 0 var(--rad);
+  width: calc(100% - var(--btn-width));
+  + button {
+    display: block;
+  }
+}
+
+//*navbarToggle
+.glyphicon-nav {
+  width: 18px;
+  padding: 8px 0;
+  position: relative;
+  display: inline-block;
+}
+
+.glyphicon-nav:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  border-top: 3px solid var(--color-brand);
+  border-bottom: 3px solid var(--color-brand);
+  top: 2px;
+}
+
+.glyphicon-nav:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0px;
+  height: 2px;
+  width: 100%;
+  background: var(--color-brand);
+}

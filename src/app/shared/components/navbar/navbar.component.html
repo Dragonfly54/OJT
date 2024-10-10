@@ -1,0 +1,115 @@
+<!-- //* navbar.component.html -->
+<nav class="navbar" [class.sidebar-open]="isSidebarOpen">
+  <div class="container-fluid">
+    <!-- //*sidebarToggle -->
+    <button class="btn-toggle btn" (click)="toggleSidebar()">
+      <span class="glyphicon glyphicon-nav" aria-hidden="true"></span>
+    </button>
+    <!-- //*searchForm -->
+    <form class="search-form d-flex">
+      <input
+        class="search-input form-control me-2"
+        id="search"
+        type="search"
+        placeholder="Search..."
+        autocomplete="off"
+      />
+      <button class="search-btn btn" type="submit">
+        <img
+          class="search-icon"
+          src="assets/img/icons/search.svg"
+          alt="search-icon"
+        />
+      </button>
+    </form>
+    <div class="d-flex align-items-center ms-auto">
+      <!-- //*navbarNotifIcon -->
+      <div class="notif-div dropdown">
+        <button
+          class="notif-btn btn dropdown-toggle"
+          type="button"
+          id="notificationDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            class="notif-icon"
+            src="assets/img/icons/notification-bing.svg"
+            alt="bell-icon"
+          />
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-left"
+          aria-labelledby="notificationDropdown"
+        >
+          <li class="dropdown-header">
+            <span class="header-text">Notification</span>
+            <button class="clear-btn btn btn-link">Clear All</button>
+          </li>
+          <div class="dropdown-divider"></div>
+          <li>
+            <a class="notif-item dropdown-item" routerLink=""
+              ><img
+                src="assets/img/customer/customer1.jpg"
+                alt="user-logo"
+                class="customer-img"
+              />Employee A made a sale Iced Americano.</a
+            >
+          </li>
+          <div class="dropdown-divider"></div>
+          <li>
+            <a class="notif-item dropdown-item" routerLink=""
+              ><img
+                src="assets/img/customer/customer4.jpg"
+                alt="user-logo"
+                class="customer-img"
+              />Employee A made a sale Avocado Waffle.</a
+            >
+          </li>
+          <div class="dropdown-divider"></div>
+          <li>
+            <a class="notif-item dropdown-item" routerLink=""
+              ><img
+                src="assets/img/customer/customer5.jpg"
+                alt="user-logo"
+                class="customer-img"
+              />Employee A made a sale Americano.</a
+            >
+          </li>
+          <div class="dropdown-divider"></div>
+          <li class="dropdown-footer">
+            <button class="view-all-notif btn btn-link">
+              View all Notifications
+            </button>
+          </li>
+        </ul>
+      </div>
+      <!-- //*userToggle -->
+      <div class="user-toggle dropdown">
+        <button
+          class="user-btn btn btn-transparent dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <a class="user-name">Hans Geronimo</a>
+          <a class="navbar-user-icon">
+            <img
+              src="assets/img/profiles/avator1.jpg"
+              alt="user-logo"
+              class="user-img d-inline-block align-text-top"
+            />
+          </a>
+        </button>
+        <ul class="dropdown-menu transparent-dropdown">
+          <li>
+            <a class="dropdown-item" (click)="logout()"
+              ><i class="bi bi-box-arrow-left"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

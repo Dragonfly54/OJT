@@ -1,0 +1,54 @@
+<ng-template #modalEmail let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Email Address</h4>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="email-div form-floating form-outline mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="email-input"
+        formControlName="email"
+        placeholder="Developer@eei.com.ph"
+      />
+      <label class="email-label" for="email-input">Email Address</label>
+      <div
+        *ngIf="
+          emailForm.get('email')?.hasError('required') &&
+          (emailForm.get('email')?.touched || emailForm.get('email')?.dirty)
+        "
+        class="text-danger"
+      >
+        Email is required.
+      </div>
+      <div
+        *ngIf="
+          emailForm.get('email')?.hasError('email') &&
+          (emailForm.get('email')?.touched || emailForm.get('email')?.dirty)
+        "
+        class="text-danger"
+      >
+        Please enter a valid email address.
+      </div>
+    </div>
+  </div>
+  <div class="button-container mb-4">
+    <button
+      type="submit"
+      class="btn btn-primary login-button fw-medium"
+      [disabled]="!emailForm.valid"
+    >
+      Change Email
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,54 @@
+<ng-template #modalPassword let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Password</h4>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="password-div form-floating form-outline mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="password-input"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <label class="password-label" for="password-input">Password</label>
+      <div
+        *ngIf="
+          passForm.get('password')?.hasError('required') &&
+          (passForm.get('password')?.touched || passForm.get('password')?.dirty)
+        "
+        class="text-danger"
+      >
+        Password is required.
+      </div>
+      <div
+        *ngIf="
+          passForm.get('password')?.hasError('minlength') &&
+          (passForm.get('password')?.touched || passForm.get('password')?.dirty)
+        "
+        class="text-danger"
+      >
+        Password must be at least 8 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="button-container mb-4">
+    <button
+      type="submit"
+      class="btn btn-primary login-button fw-medium"
+      [disabled]="!passForm.valid"
+    >
+      Change Password
+    </button>
+  </div>
+</ng-template>

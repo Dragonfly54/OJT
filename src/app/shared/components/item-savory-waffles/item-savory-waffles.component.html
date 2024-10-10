@@ -1,0 +1,25 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div
+    class="col"
+    *ngFor="let savorywaffle of savorywaffles"
+    (click)="toggleSelection(savorywaffle)"
+    [ngClass]="{ selected: savorywaffle.selected }"
+  >
+    <div class="card">
+      <img
+        [src]="savorywaffle.imageUrl"
+        class="card-img-top"
+        alt="Savory Waffles"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ savorywaffle.title }}</h5>
+        <p class="card-text card-desc">
+          {{ savorywaffle.description }}
+        </p>
+        <p class="card-text card-price">
+          {{ savorywaffle.price | currency : "PHP" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

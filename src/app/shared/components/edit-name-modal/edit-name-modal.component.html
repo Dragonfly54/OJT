@@ -1,0 +1,59 @@
+<ng-template #modalName let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Full Name</h4>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="nameForm" (ngSubmit)="onSubmit()">
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="name"
+          type="text"
+          placeholder="Juan Dela Cruz"
+          formControlName="name"
+          [ngClass]="{
+            'invalid-input':
+              nameForm.get('name')?.invalid &&
+              (nameForm.get('name')?.dirty || nameForm.get('name')?.touched)
+          }"
+        />
+        <label for="name">Customer Name</label>
+        <div
+          class="error-message"
+          *ngIf="
+            nameForm.get('name')?.invalid &&
+            (nameForm.get('name')?.dirty || nameForm.get('name')?.touched)
+          "
+        >
+          <div *ngIf="nameForm.get('name')?.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="nameForm.get('name')?.errors?.['pattern']">
+            Name must contain only letters and spaces.
+          </div>
+          <div *ngIf="nameForm.get('name')?.errors?.['minlength']">
+            Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="nameForm.get('name')?.errors?.['maxlength']">
+            Name cannot exceed 50 characters.
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" [disabled]="nameForm.invalid">
+      Change Name
+    </button>
+  </div>
+</ng-template>

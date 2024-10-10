@@ -1,0 +1,195 @@
+<ng-template #addUser let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Add User</h4>
+      <span>Add new User</span>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3 mt-3">
+        <label for="image" class="me-2">Image</label>
+        <input
+          type="file"
+          class="form-control-file me-2"
+          id="image"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          required
+        />
+        <img
+          *ngIf="item.imageUrl"
+          [src]="item.imageUrl"
+          class="img-thumbnail mt-2"
+          style="max-width: 200px"
+          alt="Item Image"
+        />
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="firstName"
+          type="text"
+          placeholder="Juan"
+          formControlName="firstName"
+          [(ngModel)]="item.firstName"
+          [ngClass]="{
+            'invalid-input':
+              userForm.get('firstName')?.invalid &&
+              (userForm.get('firstName')?.dirty ||
+                userForm.get('firstName')?.touched)
+          }"
+        />
+        <label for="firstName">First Name</label>
+        <div
+          class="error-message"
+          *ngIf="
+            userForm.get('firstName')?.invalid &&
+            (userForm.get('firstName')?.dirty ||
+              userForm.get('firstName')?.touched)
+          "
+        >
+          <div *ngIf="userForm.get('firstName')?.errors?.['required']">
+            First Name is required.
+          </div>
+          <div *ngIf="userForm.get('firstName')?.errors?.['pattern']">
+            First Name must contain only letters and spaces.
+          </div>
+          <div *ngIf="userForm.get('firstName')?.errors?.['minlength']">
+            First Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="userForm.get('firstName')?.errors?.['maxlength']">
+            First Name cannot exceed 50 characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="lastName"
+          type="text"
+          placeholder="Dela Cruz"
+          formControlName="lastName"
+          [(ngModel)]="item.lastName"
+          [ngClass]="{
+            'invalid-input':
+              userForm.get('lastName')?.invalid &&
+              (userForm.get('lastName')?.dirty ||
+                userForm.get('lastName')?.touched)
+          }"
+        />
+        <label for="lastName">Last Name</label>
+        <div
+          class="error-message"
+          *ngIf="
+            userForm.get('lastName')?.invalid &&
+            (userForm.get('lastName')?.dirty ||
+              userForm.get('lastName')?.touched)
+          "
+        >
+          <div *ngIf="userForm.get('lastName')?.errors?.['required']">
+            Last Name is required.
+          </div>
+          <div *ngIf="userForm.get('lastName')?.errors?.['pattern']">
+            Last Name must contain only letters and spaces.
+          </div>
+          <div *ngIf="userForm.get('lastName')?.errors?.['minlength']">
+            Last Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="userForm.get('lastName')?.errors?.['maxlength']">
+            Last Name cannot exceed 50 characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="phoneNum"
+          type="text"
+          placeholder="09078476063"
+          formControlName="phoneNum"
+          [(ngModel)]="item.mobileNum"
+          [ngClass]="{
+            'invalid-input':
+              userForm.get('phoneNum')?.invalid &&
+              (userForm.get('phoneNum')?.dirty ||
+                userForm.get('phoneNum')?.touched)
+          }"
+        />
+        <label for="phoneNum">Phone Number</label>
+        <div
+          class="error-message"
+          *ngIf="
+            userForm.get('phoneNum')?.invalid &&
+            (userForm.get('phoneNum')?.dirty ||
+              userForm.get('phoneNum')?.touched)
+          "
+        >
+          <div *ngIf="userForm.get('phoneNum')?.errors?.['required']">
+            Phone number is required.
+          </div>
+          <div *ngIf="userForm.get('phoneNum')?.errors?.['pattern']">
+            Phone number must contain only digits.
+          </div>
+          <div *ngIf="userForm.get('phoneNum')?.errors?.['minlength']">
+            Phone number must be 11 digits long.
+          </div>
+          <div *ngIf="userForm.get('phoneNum')?.errors?.['maxlength']">
+            Phone number cannot exceed 11 digits.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="email"
+          type="email"
+          placeholder="juanDelaCruz@gmail.com"
+          formControlName="email"
+          [(ngModel)]="item.email"
+          [ngClass]="{
+            'invalid-input':
+              userForm.get('email')?.invalid &&
+              (userForm.get('email')?.dirty || userForm.get('email')?.touched)
+          }"
+        />
+        <label for="email">Email Address</label>
+        <div
+          class="error-message"
+          *ngIf="
+            userForm.get('email')?.invalid &&
+            (userForm.get('email')?.dirty || userForm.get('email')?.touched)
+          "
+        >
+          <div *ngIf="userForm.get('email')?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="userForm.get('email')?.errors?.['email']">
+            Invalid email format.
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="userForm.invalid"
+      (click)="onSubmit()"
+    >
+      Add User
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,63 @@
+<ng-template #modalPhone let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Phone Number</h4>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="phoneNum"
+        type="text"
+        placeholder="09078476063"
+        formControlName="phoneNum"
+        [ngClass]="{
+          'invalid-input':
+            phoneForm.get('phoneNum')?.invalid &&
+            (phoneForm.get('phoneNum')?.dirty ||
+              phoneForm.get('phoneNum')?.touched)
+        }"
+      />
+      <label for="phoneNum">Phone Number</label>
+      <div
+        class="error-message"
+        *ngIf="
+          phoneForm.get('phoneNum')?.invalid &&
+          (phoneForm.get('phoneNum')?.dirty ||
+            phoneForm.get('phoneNum')?.touched)
+        "
+      >
+        <div *ngIf="phoneForm.get('phoneNum')?.errors?.['required']">
+          Phone number is required.
+        </div>
+        <div *ngIf="phoneForm.get('phoneNum')?.errors?.['pattern']">
+          Phone number must contain only digits.
+        </div>
+        <div *ngIf="phoneForm.get('phoneNum')?.errors?.['minlength']">
+          Phone number must be 11 digits long.
+        </div>
+        <div *ngIf="phoneForm.get('phoneNum')?.errors?.['maxlength']">
+          Phone number cannot exceed 11 digits.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="phoneForm.invalid"
+    >
+      Change Phone Number
+    </button>
+  </div>
+</ng-template>

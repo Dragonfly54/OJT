@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <div class="title">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="dash-widget">
+    <div class="card total-items-sold">
+      <div class="card-body pt-2">
+        <div
+          class="icon icon-size icon-shape icon-bg-color icon-box-shadow icon-border-radius position-vt position-absolute"
+        >
+          <i class="bi bi-bag-heart-fill"></i>
+        </div>
+        <h5 class="card-title">Total Items Sold</h5>
+        <span class="unit">P 12000</span>
+      </div>
+    </div>
+    <div class="card total-store-sales">
+      <div class="card-body pt-2">
+        <div
+          class="icon icon-size icon-shape icon-bg-color icon-box-shadow icon-border-radius position-vt position-absolute"
+        >
+          <i class="bi bi-arrow-up-square-fill"></i>
+        </div>
+        <h5 class="card-title">Total Store Sales</h5>
+        <span class="unit">P 24000</span>
+      </div>
+    </div>
+    <div class="card text-white bg-warning store-customers">
+      <div class="card-body">
+        <div class="card-items text-wrap">
+          <h1>120</h1>
+          <h6>Store Customers</h6>
+        </div>
+        <div class="card-img">
+          <i class="bi bi-person"></i>
+        </div>
+      </div>
+    </div>
+    <div class="card text-white bg-primary store-invoice">
+      <div class="card-body">
+        <div class="card-items">
+          <h1>100</h1>
+          <h6>Store Invoice</h6>
+        </div>
+        <div class="card-img">
+          <i class="bi bi-file-earmark-richtext"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="transaction-tbl">
+    <div class="card">
+      <div class="card-header">Recent Transactions</div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th (click)="sort('transactionId')">Transaction Id</th>
+              <th (click)="sort('payMethod')">Payment Method</th>
+              <th (click)="sort('addDate')">Added Date</th>
+              <th (click)="sort('addBy')">Added By</th>
+              <!-- add modal category here  -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transaction of pagedTransactions">
+              <td>{{ transaction.transactionId }}</td>
+              <td>{{ transaction.payMethod }}</td>
+              <td>{{ transaction.addDate }}</td>
+              <td>{{ transaction.addBy }}</td>
+              <!-- add the modal button here -->
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+          <ngb-pagination
+            [collectionSize]="transactions.length"
+            [(page)]="initialPage"
+            [pageSize]="pageSize"
+            [maxSize]="5"
+            [rotate]="true"
+            (pageChange)="pageChange($event)"
+          ></ngb-pagination>
+
+          <select
+            class="form-select"
+            style="width: auto"
+            [(ngModel)]="pageSize"
+            (ngModelChange)="updatePageSize()"
+          >
+            <option [ngValue]="2">2 items per page</option>
+            <option [ngValue]="4">4 items per page</option>
+            <option [ngValue]="6">6 items per page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

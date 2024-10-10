@@ -1,0 +1,214 @@
+:host {
+  --rad: 0.7rem;
+  --height: 2rem;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --bg-grey: #f5f5f5;
+  --dur: 0.3s;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+  --btn-width: 3rem;
+  --color-brand: #febe3a;
+  --color-alert: #d9534f;
+  --bg-hover: #555;
+  --bg-color: #2a2d35;
+  --text-cb: #1e90ff;
+  --sub-brand-color: #781905;
+}
+
+.cat-items {
+  padding: 2rem 0 1rem 0;
+}
+
+button {
+  border: 0;
+}
+
+.title {
+  padding: 0 0 1rem 0;
+  color: var(--bg-color);
+}
+
+.dropdown-toggle {
+  border-radius: 5px;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.dropdown-menu {
+  background-color: var(--bg-color);
+}
+
+.dropdown-menu li a {
+  color: var(--color-light);
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--bg-hover);
+  transition: background-color 0.3s, border-radius 0.3s;
+  border-radius: 12px;
+}
+
+.dotted-divider {
+  border: none;
+  border-top: 3px dotted #999;
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+}
+
+@mixin cat-img($width, $height: auto, $border-radius: 50%) {
+  width: $width;
+  height: $height;
+  object-fit: cover;
+  border-radius: $border-radius;
+}
+
+.cat-img {
+  @include cat-img(2.5rem, 2.5rem);
+  border: 2px solid transparent;
+}
+
+.crd-ctg {
+  display: grid;
+  grid-template-rows: 8rem;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1em;
+  .card {
+    width: auto;
+    height: auto;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
+  }
+  .card:hover {
+    background-color: var(--color-brand);
+  }
+}
+
+.card.active {
+  background-color: var(--color-brand);
+  padding: 0;
+  margin: 0;
+}
+
+.total-items {
+  background-color: var(--bg-grey);
+  color: var(--text-cb);
+  width: 7rem;
+  height: auto;
+  border: 0;
+  font-weight: bold;
+}
+
+.btn-clear-all button.bold {
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 10px 0 10px 0;
+  max-width: auto;
+  height: 300px;
+  overflow-y: auto;
+  .card-cart-item {
+    display: grid;
+    grid-template-rows: 125px;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    gap: 1rem;
+    .item-image {
+      justify-self: flex-start;
+      align-items: center;
+      img {
+        max-width: 125px;
+        height: auto;
+        border-radius: 10px;
+      }
+    }
+    .item-info {
+      justify-self: flex-start;
+      align-items: center;
+      .item-price {
+        padding-bottom: 10px;
+      }
+      .quantity-control {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: transparent;
+          border: 2px solid transparent;
+          border-color: var(--color-brand);
+          border-radius: 5px;
+          width: 25px;
+          height: 25px;
+        }
+        button:hover {
+          background-color: var(--color-brand);
+          color: var(--color-dark);
+        }
+        .quantity-counter {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .item-remove {
+      justify-items: center;
+      align-items: center;
+      button {
+        min-width: 74px;
+        min-height: 74px;
+        border-radius: 5px;
+        .bi {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+.total {
+  .total-title {
+    font-weight: bold;
+    color: var(--text-cb);
+  }
+  .total-value {
+    font-weight: bold;
+    color: var(--text-cb);
+  }
+}
+
+.checkout-final {
+  margin-top: 10px;
+  .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 3rem;
+    padding: 0 10px 0 10px;
+    font-weight: bold;
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
+    border-radius: 5px;
+  }
+  .card:hover {
+    background-color: transparent;
+    border: 2px solid var(--text-cb);
+    color: var(--text-cb);
+  }
+}

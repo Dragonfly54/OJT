@@ -1,0 +1,17 @@
+.container-fluid {
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+.header-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/img/background/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.app-navbar {
+  z-index: 1;
+}

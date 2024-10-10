@@ -1,0 +1,22 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div
+    class="col"
+    *ngFor="let colddrink of colddrinks"
+    (click)="toggleSelection(colddrink)"
+    [ngClass]="{ selected: colddrink.selected }"
+  >
+    <div class="card">
+      <img
+        [src]="colddrink.imageUrl"
+        class="card-img-top"
+        alt="Savory Waffles"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ colddrink.title }}</h5>
+        <p class="card-text card-price">
+          {{ colddrink.price | currency : "PHP" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

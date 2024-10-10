@@ -1,0 +1,325 @@
+<div class="container-fluid">
+  <section id="about" class="about">
+    <h1>About Us</h1>
+    <p>
+      Welcome to Wapol Haus, where culinary excellence meets cozy ambiance.
+      Nestled amidst lush greenery, our restaurant offers a serene escape for
+      food enthusiasts seeking a delightful dining experience. At Wapol Haus, we
+      take pride in crafting tantalizing dishes that tantalize your taste buds
+      and warm your soul.
+    </p>
+    <p>
+      From our mouthwatering signature waffle creations to our heavenly
+      Frappuccinos, every bite and sip is a journey of flavor and satisfaction.
+      Situated in the heart of nature's embrace, our location enhances the
+      dining experience, providing a tranquil backdrop for indulging in culinary
+      delights. Come join us at Wapol Haus and savor the essence of good food
+      amidst the embrace of nature.
+    </p>
+    <img
+      class="waffle-sticker"
+      src="assets/img/sticker/waffle.png"
+      alt="waffle-sticker"
+    />
+  </section>
+  <section id="product" class="product">
+    <h1>Menu</h1>
+
+    <div class="item-carousel-one">
+      <div class="ctg-appetizers">
+        <div class="ctg-title"><span>Appetizers</span></div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let appetizer of appetizers">
+            <div class="card">
+              <img
+                [src]="appetizer.imageUrl"
+                class="card-img-top"
+                alt="Appetizers"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ appetizer.title }}</h5>
+                <p class="card-text card-price">
+                  {{ appetizer.price | currency : "PHP" }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="addToCart(appetizer)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+
+      <div class="ctg-savorywaffles">
+        <div class="ctg-title"><span>Savory Waffles</span></div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let savory of savorywaffles">
+            <div class="card">
+              <img
+                [src]="savory.imageUrl"
+                class="card-img-top"
+                alt="Appetizers"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ savory.title }}</h5>
+                <p class="card-text card-price">
+                  {{ savory.price | currency : "PHP" }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="addToCart(savory)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+
+      <div class="ctg-sweetwaffles">
+        <div class="ctg-title"><span>Sweet Waffles</span></div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let sweet of sweetwaffles">
+            <div class="card">
+              <img
+                [src]="sweet.imageUrl"
+                class="card-img-top"
+                alt="Appetizers"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ sweet.title }}</h5>
+                <p class="card-text card-price">
+                  {{ sweet.price | currency : "PHP" }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="addToCart(sweet)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+
+    <div class="item-carousel-two">
+      <div class="ctg-salads">
+        <div class="ctg-title"><span>Salads</span></div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let salad of salads">
+            <div class="card">
+              <img
+                [src]="salad.imageUrl"
+                class="card-img-top"
+                alt="Appetizers"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ salad.title }}</h5>
+                <p class="card-text card-price">
+                  {{ salad.price | currency : "PHP" }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="addToCart(salad)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+
+      <div class="ctg-ricedishes">
+        <div class="ctg-title"><span>Rice Dishes</span></div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let ricedish of ricedishes">
+            <div class="card">
+              <img
+                [src]="ricedish.imageUrl"
+                class="card-img-top"
+                alt="Appetizers"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ ricedish.title }}</h5>
+                <p class="card-text card-price">
+                  {{ ricedish.price | currency : "PHP" }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="addToCart(ricedish)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+
+      <div class="ctg-colddrinks">
+        <div class="ctg-title"><span>Cold Drinks</span></div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let colddrink of colddrinks">
+            <div class="card">
+              <img
+                [src]="colddrink.imageUrl"
+                class="card-img-top"
+                alt="Appetizers"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ colddrink.title }}</h5>
+                <p class="card-text card-price">
+                  {{ colddrink.price | currency : "PHP" }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="addToCart(colddrink)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+
+    <div class="item-carousel-three">
+      <div class="ctg-hotdrinks">
+        <div class="ctg-title"><span>Hot Drinks</span></div>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let hotderink of hotdrinks">
+            <div class="card">
+              <img
+                [src]="hotderink.imageUrl"
+                class="card-img-top"
+                alt="Appetizers"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ hotderink.title }}</h5>
+                <p class="card-text card-price">
+                  {{ hotderink.price | currency : "PHP" }}
+                </p>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  (click)="addToCart(hotderink)"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+
+    <div class="custom-shape-divider-top-wave">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </section>
+  <section id="location" class="location">
+    <h1>Visit Us</h1>
+
+    <div class="location-img">
+      <div class="location-1">
+        <img class="img-1" src="assets/img/location/wapol2.jpg" alt="img-1" />
+      </div>
+      <div class="location-2">
+        <img class="img-2" src="assets/img/location/wapol3.jpg" alt="img-2" />
+      </div>
+      <div class="location-3">
+        <img class="img-3" src="assets/img/location/wapol4.jpg" alt="img-3" />
+      </div>
+      <div class="location-4">
+        <img class="img-4" src="assets/img/location/wapol5.jpg" alt="img-4" />
+      </div>
+    </div>
+
+    <h4>
+      <a href="https://maps.app.goo.gl/H15mYR4aK7Ka1kwy6"
+        >Lot 235 BSD 03 - 002050, Livestock Village Ayala, Magalang, Pampanga</a
+      >
+    </h4>
+
+    <div class="custom-shape-divider-top-waveopa">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+          opacity=".25"
+          class="shape-fill"
+        ></path>
+        <path
+          d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+          opacity=".5"
+          class="shape-fill"
+        ></path>
+        <path
+          d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <h1>Contact Us</h1>
+
+    <app-contact-us></app-contact-us>
+
+    <div class="custom-shape-divider-top-tilt">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </section>
+</div>

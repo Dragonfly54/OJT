@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="disclaimer">
+    <div class="card card-receipt">
+      <div class="card-body">
+        <div class="title-receipt"><h3>Wapol Haus</h3></div>
+        <div class="addres-receipt">
+          <p>
+            Lot 235 BSD 03 - 002050, Livestock Village Ayala, Magalang, Pampanga
+          </p>
+        </div>
+        <div class="host-date">
+          <div class="host">Host: Hans</div>
+          <div class="date">07/20/2024</div>
+        </div>
+        <hr class="dotted-divider" />
+        <div class="ctg">
+          <span class="ctg-qty">QTY</span>
+          <span class="ctg-item">ITEM</span>
+          <span class="ctg-price">PRICE</span>
+        </div>
+        <div *ngFor="let item of cartItems">
+          <div class="item-details">
+            <span class="item-qty">{{ item.quantity }}</span>
+            <span class="item-title">{{ getItemTitle(item) }}</span>
+            <span class="item-price">{{
+              getItemPrice(item) | currency : "PHP"
+            }}</span>
+          </div>
+        </div>
+        <hr />
+        <div class="totals">
+          <div class="d-flex justify-content-between">
+            <span>Subtotal</span>
+            <span>{{ subtotal | currency : "PHP" }}</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>VAT</span>
+            <span>{{ vat | currency : "PHP" }}</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>Total</span>
+            <span>{{ totalPrice | currency : "PHP" }}</span>
+          </div>
+        </div>
+        <div class="final-total"><span>=TOTAL: -------------------</span></div>
+      </div>
+      <div class="card-footer"><span>THANKS FOR VISITING</span></div>
+    </div>
+  </div>
+</div>

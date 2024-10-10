@@ -1,0 +1,33 @@
+<div class="brand-logo">
+  <img
+    class="img-logo"
+    src="assets/img/logo/wapolHausLogo.png"
+    alt="wapolHausLogo"
+  />
+</div>
+
+<div class="container-fluid">
+  <div class="options">
+    <button
+      class="btn option-btn"
+      [class.selected]="selectedOption === 'dineIn'"
+      (click)="selectOption('dineIn')"
+    >
+      <i class="bi bi-house"></i>
+      Dine In
+    </button>
+    <button
+      class="btn option-btn"
+      [class.selected]="selectedOption === 'takeOut'"
+      (click)="selectOption('takeOut')"
+    >
+      <i class="bi bi-bag"></i>
+      Take Out
+    </button>
+  </div>
+  <div class="confirm">
+    <button class="btn" [disabled]="!selectedOption" (click)="confirmOption()">
+      Confirm
+    </button>
+  </div>
+</div>

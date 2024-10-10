@@ -1,0 +1,287 @@
+<div class="container-fluid">
+  <div class="header-bg">
+    <app-order-navbar></app-order-navbar>
+  </div>
+  <div class="row-one">
+    <div class="customer-info col-lg-6 col-sm-12">
+      <div class="card">
+        <div class="card-header"><h3>Customer Details</h3></div>
+        <div class="card-body">
+          <form [formGroup]="paymentForm">
+            <div class="email-div form-floating form-outline mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="email-input"
+                formControlName="email"
+                placeholder="Developer@eei.com.ph"
+                [class.invalid-input]="
+                  paymentForm.get('email')?.invalid &&
+                  (paymentForm.get('email')?.dirty ||
+                    paymentForm.get('email')?.touched)
+                "
+              />
+              <label class="email-label" for="email-input">Email Address</label>
+              <div
+                *ngIf="
+                  paymentForm.get('email')?.hasError('required') &&
+                  (paymentForm.get('email')?.touched ||
+                    paymentForm.get('email')?.dirty)
+                "
+                class="text-danger"
+              >
+                Email is required.
+              </div>
+              <div
+                *ngIf="
+                  paymentForm.get('email')?.hasError('email') &&
+                  (paymentForm.get('email')?.touched ||
+                    paymentForm.get('email')?.dirty)
+                "
+                class="text-danger"
+              >
+                Please enter a valid email address.
+              </div>
+            </div>
+
+            <select
+              class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg"
+            >
+              <option selected>Please choose your table No.</option>
+              <option value="1">RT-01</option>
+              <option value="2">RT-02</option>
+              <option value="3">RT-03</option>
+              <option value="4">P-01</option>
+              <option value="5">P-02</option>
+              <option value="6">P-03</option>
+              <option value="7">DR-01</option>
+              <option value="8">DR-01</option>
+              <option value="9">DR-01</option>
+            </select>
+          </form>
+          <div class="note">
+            <span
+              >Note: Please refer to the table number indicated on the sticker
+              affixed to your table.</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="order-summary col-lg-6 col-sm-12">
+      <div class="card">
+        <div class="card-header"><h3>Order Summary</h3></div>
+        <div class="card-body">
+          <div class="item-class mb-3">
+            <span class="ctg-qty">Quantity</span>
+            <span class="ctg-name">Name</span>
+            <span class="ctg-price">Price</span>
+          </div>
+          <div *ngFor="let item of cartItems">
+            <div class="item-details">
+              <span class="item-quantity">{{ item.quantity }}</span>
+              <span class="item-title">{{ getItemTitle(item) }}</span>
+              <span class="item-price">{{
+                getItemPrice(item) | currency : "PHP"
+              }}</span>
+            </div>
+          </div>
+          <hr />
+          <div class="totals">
+            <div class="d-flex justify-content-between total-subtotal">
+              <span>Subtotal:</span>
+              <span>{{ subtotal | currency : "PHP" }}</span>
+            </div>
+            <div class="d-flex justify-content-between total-vat">
+              <span>VAT:</span>
+              <span>{{ vat | currency : "PHP" }}</span>
+            </div>
+            <div class="d-flex justify-content-between total-price mt-3">
+              <span>Total Price:</span>
+              <div>{{ totalPrice | currency : "PHP" }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row-two">
+    <div class="cusinf-odrsmr col-lg-6 col-sm-12">
+      <div class="card">
+        <div class="card-header"><h3>Promos and Discounts</h3></div>
+        <div class="card-body">
+          <ngb-accordion class="coupon">
+            <ngb-panel title="Apply a Promo Coupon">
+              <ng-template ngbPanelContent>
+                <div class="form-coupon">
+                  <form [formGroup]="paymentForm">
+                    <div class="coupon-div form-floating form-outline mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="coupon"
+                        formControlName="coupon"
+                        placeholder="Random"
+                        [class.invalid-input]="
+                          paymentForm.get('coupon')?.invalid &&
+                          (paymentForm.get('coupon')?.dirty ||
+                            paymentForm.get('coupon')?.touched)
+                        "
+                      />
+                      <label class="coupon-label" for="coupon-input"
+                        >Coupon</label
+                      >
+                      <div
+                        *ngIf="
+                          paymentForm.get('coupon')?.invalid &&
+                          (paymentForm.get('coupon')?.dirty ||
+                            paymentForm.get('coupon')?.touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="paymentForm.get('coupon')?.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Coupon code is required.
+                        </div>
+                        <div
+                          *ngIf="paymentForm.get('coupon')?.errors?.['minlength']"
+                          class="text-danger"
+                        >
+                          Coupon code must be at least 6 characters long.
+                        </div>
+                        <div
+                          *ngIf="paymentForm.get('coupon')?.errors?.['maxlength']"
+                          class="text-danger"
+                        >
+                          Coupon code must not exceed 6 characters.
+                        </div>
+                        <div
+                          *ngIf="paymentForm.get('coupon')?.errors?.['pattern']"
+                          class="text-danger"
+                        >
+                          Coupon code must contain only letters and numbers.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coupon-btn">
+                      <button
+                        type="button"
+                        class="btn"
+                        (click)="applyCoupon()"
+                        [disabled]="paymentForm.get('coupon')?.invalid"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+          <hr />
+          <ngb-accordion class="gift-cert">
+            <ngb-panel title="Apply a Gift Certificate">
+              <ng-template ngbPanelContent>
+                <div class="form-gift-cert">
+                  <form [formGroup]="paymentForm">
+                    <div class="gift-div form-floating form-outline mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="gift"
+                        formControlName="gift"
+                        placeholder="Random"
+                        [class.invalid-input]="
+                          paymentForm.get('gift')?.invalid &&
+                          (paymentForm.get('gift')?.dirty ||
+                            paymentForm.get('gift')?.touched)
+                        "
+                      />
+                      <label class="gift-label" for="gift-input"
+                        >Gift Certificate</label
+                      >
+                      <div
+                        *ngIf="
+                          paymentForm.get('gift')?.invalid &&
+                          (paymentForm.get('gift')?.dirty ||
+                            paymentForm.get('gift')?.touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="paymentForm.get('gift')?.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Gift certificate code is required.
+                        </div>
+                        <div
+                          *ngIf="paymentForm.get('gift')?.errors?.['minlength']"
+                          class="text-danger"
+                        >
+                          Gift certificate code must be at least 6 characters
+                          long.
+                        </div>
+                        <div
+                          *ngIf="paymentForm.get('gift')?.errors?.['maxlength']"
+                          class="text-danger"
+                        >
+                          Gift certificate code must not exceed 6 characters.
+                        </div>
+                        <div
+                          *ngIf="paymentForm.get('gift')?.errors?.['pattern']"
+                          class="text-danger"
+                        >
+                          Gift certificate code must contain only letters and
+                          numbers.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="coupon-btn">
+                      <button
+                        type="button"
+                        class="btn"
+                        (click)="applyGiftCertificate()"
+                        [disabled]="paymentForm.get('gift')?.invalid"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
+      </div>
+    </div>
+    <div class="payment-method col-lg-6 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h3>Payment Method</h3>
+        </div>
+        <div class="card-body">
+          <button
+            class="btn cash"
+            (click)="handleButtonClick('cash')"
+            [class.active]="selectedOption === 'cash'"
+          >
+            <span>Cash</span><i class="bi bi-wallet-fill"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="final-price">
+    <span class="total-title">Total</span>
+    <h6 class="item-price">{{ totalPrice | currency : "PHP" }}</h6>
+  </div>
+  <div class="place-order-btn">
+    <button class="btn" routerLink="/receipt">Place Order</button>
+  </div>
+</div>

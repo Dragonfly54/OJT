@@ -1,0 +1,195 @@
+:host {
+  --rad: 0.7rem;
+  --height: 2rem;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --bg-grey: #f5f5f5;
+  --dur: 0.3s;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+  --btn-width: 3rem;
+  --color-brand: #febe3a;
+  --color-alert: #d9534f;
+  --bg-hover: #555;
+  --bg-color: #2a2d35;
+  --text-cb: #1e90ff;
+  --sub-brand-color: #781905;
+  --grey-bg: #f4f4f4;
+}
+
+body {
+  background-color: grey;
+}
+
+.container-fluid {
+  padding-left: 0%;
+  padding-right: 0%;
+  overflow: hidden;
+  .row-one {
+    padding: 50px 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1em;
+    .customer-info {
+      .note {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          font-size: 12px;
+          font-weight: 100;
+          text-align: center;
+        }
+      }
+    }
+    .order-summary {
+      justify-self: stretch;
+      .item-class {
+        span {
+          font-weight: 700;
+        }
+      }
+      .item-details,
+      .item-class {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        .item-price,
+        .ctg-price {
+          justify-self: flex-end;
+        }
+      }
+      .totals {
+        .total-price {
+          font-weight: 700;
+        }
+      }
+      hr {
+        color: grey;
+      }
+    }
+  }
+
+  .row-two {
+    padding: 0 10vw;
+    padding-bottom: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1em;
+    .card-body {
+      hr {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+      .form-coupon {
+        form {
+          .coupon-btn {
+            display: flex;
+            justify-content: flex-end;
+            button {
+              background-color: var(--color-brand);
+              border-style: none;
+              width: auto;
+              height: auto;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+      .form-gift-cert {
+        form {
+          .coupon-btn {
+            display: flex;
+            justify-content: flex-end;
+            button {
+              background-color: var(--color-brand);
+              border-style: none;
+              width: auto;
+              height: auto;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+    .payment-method {
+      .card-body {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+
+        button {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          height: 50px;
+          width: auto;
+          background-color: var(--bg-color);
+          font-weight: 700;
+          color: var(--color-light);
+          border: none;
+          i {
+            font-size: 24px;
+          }
+        }
+
+        button.active {
+          border: 3px solid var(--color-brand);
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: var(--bg-color);
+  color: #fff;
+  padding: 10px 20vw;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  .final-price {
+    span {
+      display: flex;
+      justify-content: baseline;
+    }
+    h6 {
+      color: var(--color-light);
+      font-weight: 700;
+    }
+  }
+  .place-order-btn {
+    button {
+      width: 200px;
+      height: 50px;
+      background-color: var(--color-brand);
+      font-weight: 700;
+      border: 2px solid transparent;
+      border-radius: 50px;
+    }
+  }
+}
+
+.app-navbar {
+  z-index: 1;
+}
+
+.invalid-input {
+  border-color: red;
+}

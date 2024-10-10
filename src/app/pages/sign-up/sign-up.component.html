@@ -1,0 +1,255 @@
+<svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+  <defs>
+    <style>
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .out-top {
+        animation: rotate 20s linear infinite;
+        transform-origin: 13px 25px;
+      }
+      .out-bottom {
+        animation: rotate 25s linear infinite;
+        transform-origin: 84px 93px;
+      }
+      .in-bottom {
+        animation: rotate 15s linear infinite;
+        transform-origin: 84px 93px;
+      }
+    </style>
+  </defs>
+  <path
+    fill="#eb4048"
+    class="out-top"
+    d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"
+  />
+  <path
+    fill="#781905"
+    class="out-bottom"
+    d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"
+  />
+  <path
+    fill="#febe3a"
+    class="in-bottom"
+    d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"
+  />
+</svg>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-md-5 col-lg-6 logo-title-desc">
+      <div class="main-logo">
+        <a routerLink="/landing/landing-content"
+          ><img
+            src="assets/img/logo/wapolHausLogo.png"
+            alt="main-logo"
+            class="main-logo-img"
+        /></a>
+      </div>
+      <div class="title-h1">
+        <h1 class="display-3 title-text">
+          <span class="main-title">Welcome to the Family!</span>
+        </h1>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-5 col-lg-6 sign-up-form">
+      <div class="card bg-glass">
+        <div class="card-body px-4 py-5 px-md-5">
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <h2 class="sign-up-title mb-4 fw-medium">Sign Up</h2>
+            <div class="sign-up-name d-flex justify-content-between">
+              <div
+                class="fristname-div form-floating form-outline col-md-6 mb-3 p-1 overflow-hidden"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstname-input"
+                  formControlName="firstname"
+                  placeholder="First Name"
+                />
+                <label class="firstname-label" for="firstname-input"
+                  >First name</label
+                >
+                <div
+                  *ngIf="
+                    signupForm.get('firstname')?.hasError('required') &&
+                    (signupForm.get('firstname')?.touched ||
+                      signupForm.get('firstname')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  First name is required.
+                </div>
+                <div
+                  *ngIf="
+                    signupForm.get('firstname')?.hasError('pattern') &&
+                    (signupForm.get('firstname')?.touched ||
+                      signupForm.get('firstname')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  First name contains only letters.
+                </div>
+              </div>
+
+              <div
+                class="lastname-div form-floating form-outline col-md-6 mb-3 p-1 overflow-hidden"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastname-input"
+                  formControlName="lastname"
+                  placeholder="Last Name"
+                />
+                <label class="lastname-label" for="lastname-input"
+                  >Last Name</label
+                >
+                <div
+                  *ngIf="
+                    signupForm.get('lastname')?.hasError('required') &&
+                    (signupForm.get('lastname')?.touched ||
+                      signupForm.get('lastname')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Last name is required.
+                </div>
+                <div
+                  *ngIf="
+                    signupForm.get('lastname')?.hasError('pattern') &&
+                    (signupForm.get('lastname')?.touched ||
+                      signupForm.get('lastname')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Last name contains only letters.
+                </div>
+              </div>
+            </div>
+
+            <div class="sign-up-password d-flex justify-content-between">
+              <div
+                class="password-div form-floating form-outline col-md-6 mb-3 p-1 overflow-hidden"
+              >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password-input"
+                  formControlName="password"
+                  placeholder="Password"
+                />
+                <label class="password-label" for="password-input"
+                  >Password</label
+                >
+                <div
+                  *ngIf="
+                    signupForm.get('password')?.hasError('required') &&
+                    (signupForm.get('password')?.touched ||
+                      signupForm.get('password')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Password is required.
+                </div>
+                <div
+                  *ngIf="
+                    signupForm.get('password')?.hasError('minlength') &&
+                    (signupForm.get('password')?.touched ||
+                      signupForm.get('password')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Password must be at least 8 characters long.
+                </div>
+              </div>
+
+              <div
+                class="confirm-password-div form-floating form-outline col-md-6 mb-3 p-1 overflow-hidden"
+              >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirm-password-input"
+                  formControlName="confirmPassword"
+                  placeholder="Confirm Password"
+                />
+                <label
+                  class="confirm-password-label"
+                  for="confirm-password-input"
+                  >Confirm Password</label
+                >
+                <div
+                  *ngIf="
+                    signupForm.get('confirmPassword')?.hasError('mismatch') &&
+                    (signupForm.get('confirmPassword')?.touched ||
+                      signupForm.get('confirmPassword')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Passwords do not match.
+                </div>
+              </div>
+            </div>
+
+            <div class="sign-up-email">
+              <div class="email-div form-floating form-outline mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email-input"
+                  formControlName="email"
+                  placeholder="Developer@eei.com.ph"
+                />
+                <label class="email-label" for="email-input"
+                  >Email Address</label
+                >
+                <div
+                  *ngIf="
+                    signupForm.get('email')?.hasError('required') &&
+                    (signupForm.get('email')?.touched ||
+                      signupForm.get('email')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Email is required.
+                </div>
+                <div
+                  *ngIf="
+                    signupForm.get('email')?.hasError('email') &&
+                    (signupForm.get('email')?.touched ||
+                      signupForm.get('email')?.dirty)
+                  "
+                  class="text-danger"
+                >
+                  Please enter a valid email address.
+                </div>
+              </div>
+            </div>
+
+            <div class="button-container mb-4">
+              <button
+                type="submit"
+                class="btn btn-primary signupbutton fw-medium"
+                [disabled]="!signupForm.valid"
+              >
+                Sign Up
+              </button>
+            </div>
+
+            <div class="back-login-link fw-normal">
+              <span>Already have an account?</span>
+              <a routerLink="/login" class="back-to-login">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

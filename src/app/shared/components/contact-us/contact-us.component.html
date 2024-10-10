@@ -1,0 +1,164 @@
+<div class="container-fluid">
+  <div class="row row-name">
+    <div class="title-name">
+      <label for="name">Name</label>
+    </div>
+    <div class="validator-name">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating">
+          <input
+            class="form-control custom-input"
+            id="name"
+            type="text"
+            placeholder="Juan Dela Cruz"
+            formControlName="name"
+            autocomplete="on"
+            [ngClass]="{
+              'invalid-input':
+                contactForm.get('name')?.invalid &&
+                (contactForm.get('name')?.dirty ||
+                  contactForm.get('name')?.touched)
+            }"
+          />
+          <label for="name">Customer Name</label>
+          <div
+            class="error-message"
+            *ngIf="
+              contactForm.get('name')?.invalid &&
+              (contactForm.get('name')?.dirty ||
+                contactForm.get('name')?.touched)
+            "
+          >
+            <div *ngIf="contactForm.get('name')?.errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="contactForm.get('name')?.errors?.['pattern']">
+              Name must contain only letters and spaces.
+            </div>
+            <div *ngIf="contactForm.get('name')?.errors?.['minlength']">
+              Name must be at least 2 characters long.
+            </div>
+            <div *ngIf="contactForm.get('name')?.errors?.['maxlength']">
+              Name cannot exceed 50 characters.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row row-email">
+    <div class="title-email">
+      <label for="email">Email</label>
+    </div>
+    <div class="validator-email">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating mb-3">
+          <input
+            class="form-control custom-input"
+            id="email"
+            type="text"
+            placeholder="juanDelaCruz@gmail.com"
+            formControlName="email"
+            autocomplete="on"
+            [ngClass]="{
+              'invalid-input':
+                contactForm.get('email')?.invalid &&
+                (contactForm.get('email')?.dirty ||
+                  contactForm.get('email')?.touched)
+            }"
+          />
+          <label for="email">Email Address</label>
+          <div
+            class="error-message"
+            *ngIf="
+              contactForm.get('email')?.invalid &&
+              (contactForm.get('email')?.dirty ||
+                contactForm.get('email')?.touched)
+            "
+          >
+            <div *ngIf="contactForm.get('email')?.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="contactForm.get('email')?.errors?.['email']">
+              Invalid email format.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row row-discover">
+    <div class="title-discover">
+      <label for="discover">How did you find us?</label>
+    </div>
+    <div class="validator-discover">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <select
+          class="form-select form-select-lg"
+          id="discover"
+          aria-label=".form-select-lg example"
+        >
+          <option selected>TV</option>
+          <option value="1">Friends</option>
+          <option value="2">Advertisement</option>
+          <option value="3">Social Media</option>
+          <option value="4">Others</option>
+        </select>
+      </form>
+    </div>
+  </div>
+
+  <div class="row row-message">
+    <div class="title-message">
+      <label for="message">Send us a message</label>
+    </div>
+    <div class="validator-message">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating mb-3">
+          <textarea
+            class="form-control custom-textarea"
+            id="message"
+            placeholder="Your message here"
+            formControlName="message"
+            [ngClass]="{
+              'invalid-input':
+                contactForm.get('message')?.invalid &&
+                (contactForm.get('message')?.dirty ||
+                  contactForm.get('message')?.touched)
+            }"
+          ></textarea>
+          <label for="message">Message</label>
+          <div
+            class="error-message"
+            *ngIf="
+              contactForm.get('message')?.invalid &&
+              (contactForm.get('message')?.dirty ||
+                contactForm.get('message')?.touched)
+            "
+          >
+            <div *ngIf="contactForm.get('message')?.errors?.['required']">
+              Message is required.
+            </div>
+            <div *ngIf="contactForm.get('message')?.errors?.['minlength']">
+              Message must be at least 10 characters.
+            </div>
+            <div *ngIf="contactForm.get('message')?.errors?.['maxlength']">
+              Message cannot exceed 500 characters.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="submit-contact">
+    <button
+      type="submit"
+      class="btn btn-submit"
+      [disabled]="contactForm.invalid"
+    >
+      Send Message
+    </button>
+  </div>
+</div>

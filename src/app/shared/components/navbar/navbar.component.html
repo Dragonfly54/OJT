@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="navbar-logo">
+      <a class="navbar-brand" routerLink=""
+        ><img
+          class="img-logo"
+          src="assets/img/logo/wapolHausLogo.png"
+          alt="wapolHausLogo"
+      /></a>
+    </div>
+    <div
+      class="collapse navbar-collapse navbar-item"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            (click)="scrollToSection('about')"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            (click)="scrollToSection('product')"
+            >Product</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            (click)="scrollToSection('location')"
+            >Location</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            (click)="scrollToSection('contact')"
+            >Contact</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/order">Order Now!</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

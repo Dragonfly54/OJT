@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="navbar-logo">
+      <a class="navbar-brand" routerLink="/order"
+        ><img
+          class="img-logo"
+          src="assets/img/logo/wapolHausLogo.png"
+          alt="wapolHausLogo"
+      /></a>
+      <div class="search-bar">
+        <form class="search-form d-flex">
+          <input
+            class="search-input form-control me-2"
+            id="search"
+            type="search"
+            placeholder="Search..."
+            autocomplete="off"
+          />
+          <button class="search-btn btn" type="submit">
+            <img
+              class="search-icon"
+              src="assets/img/logo/search.svg"
+              alt="search-icon"
+            />
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      class="collapse navbar-collapse navbar-item"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item"></li>
+        <li class="nav-item">
+          <a class="nav-link back-to-home" (click)="back()">Home</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

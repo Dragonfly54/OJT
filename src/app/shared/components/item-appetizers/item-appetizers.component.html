@@ -1,0 +1,18 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div
+    class="col"
+    *ngFor="let appetizer of appetizers"
+    (click)="toggleSelection(appetizer)"
+    [ngClass]="{ selected: appetizer.selected }"
+  >
+    <div class="card">
+      <img [src]="appetizer.imageUrl" class="card-img-top" alt="Appetizers" />
+      <div class="card-body">
+        <h5 class="card-title">{{ appetizer.title }}</h5>
+        <p class="card-text card-price">
+          {{ appetizer.price | currency : "PHP" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

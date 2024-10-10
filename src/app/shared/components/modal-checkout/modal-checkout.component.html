@@ -1,0 +1,49 @@
+<ng-template #modalPayment let-modal>
+  <div class="modal-header d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <h4 class="modal-title" id="add-product-modal">Checkout</h4>
+    </div>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="order-summary">
+      <h5>Order Summary</h5>
+      <div *ngFor="let item of cartItems$ | async">
+        <div class="item-details">
+          <span class="item-quantity">x{{ item.quantity }}</span>
+          <span class="item-title">{{ getItemTitle(item) }}</span>
+          <span class="item-price">{{
+            getItemPrice(item) | currency : "PHP"
+          }}</span>
+        </div>
+      </div>
+      <hr />
+      <div class="totals">
+        <div class="d-flex justify-content-between total-subtotal">
+          <span>Subtotal</span>
+          <span>{{ calculateSubtotal() | currency : "PHP" }}</span>
+        </div>
+        <div class="d-flex justify-content-between total-vat">
+          <span>VAT</span>
+          <span>{{ calculateVat() | currency : "PHP" }}</span>
+        </div>
+        <div class="d-flex justify-content-between total-price">
+          <span>Total</span>
+          <span>{{ calculateTotalPrice() | currency : "PHP" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn" (click)="proceedToPayment()">
+      Proceed to payment
+    </button>
+  </div>
+</ng-template>
